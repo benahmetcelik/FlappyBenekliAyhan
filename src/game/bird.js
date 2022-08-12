@@ -35,6 +35,7 @@ export default class Bird {
     }
 
     isDead() {
+
         return this.birdPosition.y >= CANVAS_HEIGHT - BIRDSIZE.Height - FLOOROFFSET ? true : false;
     }
 

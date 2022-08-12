@@ -9,7 +9,10 @@ import P5 from 'p5';
 import Images from './assets/sprite.png';
 import BackgroundImage from './assets/background.png';
 import font from './assets/FlappyBirdy.ttf';
+
 import Storage from './storage';
+
+
 
 const sketch = p5 => {
     let background = p5.loadImage(BackgroundImage);
@@ -25,7 +28,7 @@ const sketch = p5 => {
     let score;
     let storage;
     let bestScore;
-
+    
     const resetGame = () => {
         gameStart = false;
         gameOver = false;
@@ -52,9 +55,13 @@ const sketch = p5 => {
     const canvasClick = () => {
         if (p5.mouseButton === 'left') {
             if (gameOver === false)
+               
                 bird.jump();
             if (gameStart === false)
                 gameStart = true;
+                document.getElementById("gameFinish").src= 'https://www.youtube.com/embed/fi0moZX3Ag4?controls=0&autoplay=1';
+               
+
             if (gameOver &&
                 p5.mouseX > CANVAS_WIDTH / 2 - 85 &&
                 p5.mouseX < CANVAS_WIDTH / 2 + 75 &&
@@ -110,6 +117,7 @@ const sketch = p5 => {
 
 
         if (gameStart === false) {
+
             gameText.startText();
         }
 
@@ -117,6 +125,7 @@ const sketch = p5 => {
             if (score > bestScore) {
                 bestScore = score;
                 storage.setStorageData({ bestScore: score });
+
             }
 
             gameText.gameOverText(score, bestScore);
